@@ -1,5 +1,5 @@
+
 import java.util.Date;
-import java.util.Calendar;
 
 public class LibraryMember {
 
@@ -44,24 +44,36 @@ public class LibraryMember {
 
     public void cetakProfilLengkap() {
         System.out.println("===== PROFIL ANGGOTA =====");
+        cetakInformasiPribadi();
+        cetakInformasiKeanggotaan();
+        cetakInformasiKeuangan();
+        System.out.println("Skor Risiko : " + hitungSkorRisiko());
+        System.out.println("Layak Upgrade?: " + periksaKelayakanUpgrade());
+        System.out.println("===========================");
+    }
+
+    private void cetakInformasiPribadi() {
         System.out.println("Nama         : " + namaLengkap);
         System.out.println("Jenis Kelamin: " + jenisKelamin);
         System.out.println("Alamat       : " + alamat);
         System.out.println("Telepon      : " + nomorTelepon);
         System.out.println("Email        : " + email);
+    }
+
+    private void cetakInformasiKeanggotaan() {
         System.out.println("Kode Anggota : " + kodeAnggota);
         System.out.println("Tanggal Gabung: " + tanggalGabung);
         System.out.println("Status Aktif : " + statusAktif);
         System.out.println("Tingkat      : " + tingkatKeanggotaan);
         System.out.println("Buku Dipinjam: " + jumlahBukuDipinjam);
+    }
+
+    private void cetakInformasiKeuangan() {
         System.out.println("Terlambat    : " + jumlahTerlambat);
         System.out.println("Denda        : Rp " + jumlahDenda);
         System.out.println("Poin         : " + poinLoyalitas);
         System.out.println("Kode Referal : " + kodeReferal);
         System.out.println("Langganan Buletin: " + langgananBuletin);
-        System.out.println("Skor Risiko : " + hitungSkorRisiko());
-        System.out.println("Layak Upgrade?: " + periksaKelayakanUpgrade());
-        System.out.println("===========================");
     }
 
     public void langgananBuletinPerpustakaan() {
@@ -81,12 +93,15 @@ public class LibraryMember {
         double skor = 0;
         skor += jumlahTerlambat * 1.5;
         skor += jumlahDenda * 0.1;
-        if (!statusAktif)
+        if (!statusAktif) {
             skor += 5;
-        if (tingkatKeanggotaan.equals("DASAR"))
+        }
+        if (tingkatKeanggotaan.equals("DASAR")) {
             skor += 2;
-        if (jumlahBukuDipinjam > 50)
+        }
+        if (jumlahBukuDipinjam > 50) {
             skor -= 1.5;
+        }
         return skor;
     }
 
