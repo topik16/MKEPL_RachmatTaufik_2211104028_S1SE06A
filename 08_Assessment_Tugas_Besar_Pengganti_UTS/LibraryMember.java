@@ -82,12 +82,19 @@ public class LibraryMember {
     public void gunakanKodeReferal(String kode) {
     }
 
-    public boolean periksaKelayakanUpgrade() {
-        if (tingkatKeanggotaan.equals("DASAR") && poinLoyalitas > 100) {
-            return true;
-        }
-        return false;
+public enum TingkatKeanggotaan {
+    DASAR, MENENGAH, MAHIR;
+}
+
+private TingkatKeanggotaan tingkatKeanggotaan;
+
+public boolean periksaKelayakanUpgrade() {
+    if (tingkatKeanggotaan == TingkatKeanggotaan.DASAR && poinLoyalitas > 100) {
+        return true;
     }
+    return false;
+}
+
 
     public double hitungSkorRisiko() {
         double skor = 0;
