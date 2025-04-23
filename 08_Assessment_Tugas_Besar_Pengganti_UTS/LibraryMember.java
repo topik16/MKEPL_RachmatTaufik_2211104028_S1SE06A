@@ -144,4 +144,6 @@ private double hitungTingkatKeanggotaanRisiko() {
 private double hitungJumlahBukuDipinjamRisiko() {
     return jumlahBukuDipinjam > 50 ? -1.5 : 0;
 }
+// Jika tidak digunakan, bisa dihapus
+// public void langgananBuletinPerpustakaan() { }
 }
