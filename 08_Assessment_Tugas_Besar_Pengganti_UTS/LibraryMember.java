@@ -19,11 +19,30 @@ public class LibraryMember {
     private String kodeReferal;
     private boolean langgananBuletin;
 
-    public LibraryMember(String namaLengkap, String alamat, String nomorTelepon, String email, String jenisKelamin,
-            String kodeAnggota, Date tanggalGabung, boolean statusAktif,
-            String tingkatKeanggotaan, int jumlahBukuDipinjam,
-            int jumlahTerlambat, int jumlahDenda, int poinLoyalitas,
-            String kodeReferal, boolean langgananBuletin) {
+class InformasiPribadi {
+    private String namaLengkap;
+    private String alamat;
+    private String nomorTelepon;
+    private String email;
+    private String jenisKelamin;
+}
+
+class InformasiKeanggotaan {
+    private String kodeAnggota;
+    private Date tanggalGabung;
+    private boolean statusAktif;
+    private TingkatKeanggotaan tingkatKeanggotaan;
+    private int jumlahBukuDipinjam;
+}
+
+class InformasiKeuangan {
+    private int jumlahTerlambat;
+    private int jumlahDenda;
+    private int poinLoyalitas;
+    private String kodeReferal;
+    private boolean langgananBuletin;
+}
+{
 
         this.namaLengkap = namaLengkap;
         this.alamat = alamat;
