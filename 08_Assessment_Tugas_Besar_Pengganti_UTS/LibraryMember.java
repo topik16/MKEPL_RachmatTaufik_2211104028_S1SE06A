@@ -115,67 +115,33 @@ public boolean periksaKelayakanUpgrade() {
 }
 
 
-    public double hitungSkorRisiko() {
-        double skor = 0;
-        skor += jumlahTerlambat * 1.5;
-        skor += jumlahDenda * 0.1;
-        if (!statusAktif) {
-            skor += 5;
-        }
-        if (tingkatKeanggotaan.equals("DASAR")) {
-            skor += 2;
-        }
-        if (jumlahBukuDipinjam > 50) {
-            skor -= 1.5;
-        }
-        return skor;
-    }
+public double hitungSkorRisiko() {
+    double skor = 0;
+    skor += hitungTerlambatRisiko();
+    skor += hitungDendaRisiko();
+    skor += hitungStatusAktifRisiko();
+    skor += hitungTingkatKeanggotaanRisiko();
+    skor += hitungJumlahBukuDipinjamRisiko();
+    return skor;
+}
 
-    public int getJumlahBukuDipinjam() {
-        return jumlahBukuDipinjam;
-    }
+private double hitungTerlambatRisiko() {
+    return jumlahTerlambat * 1.5;
+}
 
-    public void setJumlahBukuDipinjam(int b) {
-        jumlahBukuDipinjam = b;
-    }
+private double hitungDendaRisiko() {
+    return jumlahDenda * 0.1;
+}
 
-    public int getJumlahTerlambat() {
-        return jumlahTerlambat;
-    }
+private double hitungStatusAktifRisiko() {
+    return !statusAktif ? 5 : 0;
+}
 
-    public void setJumlahTerlambat(int t) {
-        jumlahTerlambat = t;
-    }
+private double hitungTingkatKeanggotaanRisiko() {
+    return tingkatKeanggotaan.equals("DASAR") ? 2 : 0;
+}
 
-    public int getJumlahDenda() {
-        return jumlahDenda;
-    }
-
-    public void setJumlahDenda(int d) {
-        jumlahDenda = d;
-    }
-
-    public String getTingkatKeanggotaan() {
-        return tingkatKeanggotaan;
-    }
-
-    public void setTingkatKeanggotaan(String t) {
-        tingkatKeanggotaan = t;
-    }
-
-    public String getKodeReferal() {
-        return kodeReferal;
-    }
-
-    public void setKodeReferal(String k) {
-        kodeReferal = k;
-    }
-
-    public boolean getLanggananBuletin() {
-        return langgananBuletin;
-    }
-
-    public void setLanggananBuletin(boolean l) {
-        langgananBuletin = l;
-    }
+private double hitungJumlahBukuDipinjamRisiko() {
+    return jumlahBukuDipinjam > 50 ? -1.5 : 0;
+}
 }
